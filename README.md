@@ -1,1 +1,2 @@
 # Final-IH_Bootcamp-Project
+This is my final project for Ironhack Bootcamp. The project is continuation of my Mid-Bootcamp Project. The whole idea was to combine reading books with listening to them and integrate both to work as a one whole. A mock book website was created on HTML and Java in addition to gTTS package that helped to get necessary text to speech for product showcase. In addition, a navigaton tab with Tableau depicting results of the survey (regarding reading vs listening preferences) made for Mid-Bootcamp Project has been added as well.
