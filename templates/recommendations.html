@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Book Recommendations</h2>
+    <div class="row mt-4">
+        <!-- Book 1 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='1984.jpg') }}" alt="Recommendation 1 Name" class="book-image">
+                <p class="book-title">1984 by George Orwell</p>
+            </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='pride_prejudice.jpg') }}" alt="Recommendation 2 Name" class="book-image">
+                <p class="book-title">Pride and Prejudice by Jane Austen</p>
+            </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='hunger_games.jpg') }}" alt="Recommendation 3 Name" class="book-image">
+                <p class="book-title">The Hunger Games by Suzanne Collins</p>
+            </div>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='mockingbird.jpg') }}" alt="Recommendation 4 Name" class="book-image">
+                <p class="book-title">To Kill A Mockingbird by Harper Lee</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

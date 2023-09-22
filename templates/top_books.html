@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Top Books of the Year</h2>
+    <div class="row mt-4">
+        <!-- Book 1 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='the_maid.jpg') }}" alt="Book 1 Name" class="book-image">
+                <p class="book-title">The Maid by Nita Prose</p>
+            </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='tomorrow.jpg') }}" alt="Book 2 Name" class="book-image">
+                <p class="book-title">Tomorrow, and Tomorrow, and Tomorrow by Gabrielle Zevin</p>
+            </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='house_sky_breath.jpg') }}" alt="Book 3 Name" class="book-image">
+                <p class="book-title">House of Sky and Breath by Sarah J. Maas</p>
+            </div>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="col-md-3">
+            <div class="book-card">
+                <img src="{{ url_for('static', filename='book_lovers.jpg') }}" alt="Book 4 Name" class="book-image">
+                <p class="book-title">Book Lovers by Emily Henry</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

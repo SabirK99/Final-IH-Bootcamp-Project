@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="welcome-container">
+
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='Hiss.png') }}" alt="Hiss Logo" style="width: 150px;">
+    </div>
+    <h1>Introducing Hiss</h1>
+    <p>Your ultimate destination for books and audiobooks.</p>
+
+    <!-- Discover various genres section -->
+    <div class="genres-container">
+        <h2>Discover various genres</h2>
+        
+        <div class="book-row">
+            <!-- Book 1 -->
+            <div class="book-container">
+                <a href="{{ url_for('art_of_war') }}">
+                    <img src="{{ url_for('static', filename='Art_of_war_book.jpg') }}" alt="The Art of War" width="100px">
+                    <p>The Art of War by Sun Tzu</p>
+                </a>
+            </div>
+            
+            <!-- Book 2 -->
+            <div class="book-container">
+                <a href="{{ url_for('cant_hurt_me') }}">
+                    <img src="{{ url_for('static', filename='cant_hurt_me.jpg') }}" alt="Can't Hurt Me" width="120px">
+                    <p>Can't Hurt Me by David Goggins</p>
+                </a>
+            </div>
+
+            <!-- Book 3 -->
+            <div class="book-container">
+                <a href="{{ url_for('the_witcher') }}">
+                    <img src="{{ url_for('static', filename='the_witcher.jpg') }}" alt="The Witcher: The Last Wish" width="80px">
+                    <p>The Witcher: The Last Wish by Andrzej Sapkowski</p>
+                </a>
+            </div>
+
+            <!-- Book 4 -->
+            <div class="book-container">
+                <a href="{{ url_for('psycho_cybernetics') }}">
+                    <img src="{{ url_for('static', filename='psycho_cybernetics.jpg') }}" alt="Psycho Cybernetics" width="80px">
+                    <p>Psycho Cybernetics by Maxwell Maltz</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

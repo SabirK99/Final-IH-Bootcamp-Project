@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block search_bar %}
+{% endblock %}
+
+{% block genres_section %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="aesopTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="book-tab" data-toggle="tab" href="#book" role="tab" aria-controls="book" aria-selected="true">About the Book</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">About the Author</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="book" role="tabpanel" aria-labelledby="book-tab">
+            <img src="{{ url_for('static', filename='cant_hurt_me.jpg') }}" alt="Aesop's Fables Book Image" class="img-fluid mb-3" width="150px">
+            <p>In "Can't Hurt Me", David Goggins narrates his incredible life journey, from facing poverty and prejudice to becoming a Navy SEAL, world record holder, and ultra-endurance athlete. The book delves deep into his philosophy of pushing past pain, fear, and limits to achieve personal greatness.</p>
+        </div>
+        <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
+            <img src="{{ url_for('static', filename='goggins.jpg') }}" alt="Aesop's Author Image" class="img-fluid mb-3" width="150px">
+            <p>David Goggins is an American ultra-endurance athlete, motivational speaker, and former Navy SEAL. Known for his astounding physical feats and mental toughness, Goggins has completed numerous endurance events and set world records. Beyond his athletic accomplishments, he's recognized for his candid exploration of personal transformation and resilience.</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

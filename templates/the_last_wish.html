@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block search_bar %}
+{% endblock %}
+
+{% block genres_section %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="aesopTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="book-tab" data-toggle="tab" href="#book" role="tab" aria-controls="book" aria-selected="true">About the Book</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">About the Author</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="book" role="tabpanel" aria-labelledby="book-tab">
+            <img src="{{ url_for('static', filename='the_witcher.jpg') }}" alt="Aesop's Fables Book Image" class="img-fluid mb-3" width="150px">
+            <p>The Last Wish" is the first collection of short stories chronicling the adventures of Geralt of Rivia, a Witcher – a genetically enhanced human trained to battle ferocious monsters. Set in a rich and diverse fantasy world, these tales introduce a morally ambiguous protagonist, complex characters, and a mesh of political and romantic intrigues.</p>
+        </div>
+        <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
+            <img src="{{ url_for('static', filename='andrzej_sapkowski.jpg') }}" alt="Aesop's Author Image" class="img-fluid mb-3" width="150px">
+            <p>Andrzej Sapkowski is a Polish fantasy writer known primarily for his "Witcher" series. He's been honored with numerous awards for his work and has seen his series adapted into video games, TV series, and films. Sapkowski's writing is recognized for its intricate plots, well-fleshed characters, and immersive settings.</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

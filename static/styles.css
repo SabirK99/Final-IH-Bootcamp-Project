@@ -1,0 +1,94 @@
+body {
+    background-color: #FFEFDC; /* This is a creamy color; adjust as needed */
+}
+
+.container {
+    background-color: #FFFFFF; /* This is white color for the main content */
+    margin: 0 auto; /* This will center the container */
+    width: 80%; /* Adjust this value based on how wide you want your main content to be */
+    padding: 20px; /* Add some spacing inside the container */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: Add a slight shadow for depth */
+}
+.book-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.book-cover {
+    width: 100%;
+    max-width: 150px; /* Adjust based on your needs */
+    margin-bottom: 10px;
+}
+figure {
+    position: relative;
+    display: inline-block;
+}
+
+figcaption {
+    background-color: rgba(255, 255, 255, 0.6); /* Slight transparency, adjust as needed */
+    padding: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.book-row {
+    display: flex;
+    justify-content: space-between; /* This will evenly space the book items */
+    flex-wrap: wrap; /* This will allow items to wrap to the next line if there's not enough space */
+}
+
+.book-item {
+    flex: 1; /* This allows the book items to grow and take up equal width */
+    margin: 0 15px; /* A little margin for spacing between books */
+}
+.pdf-container {
+    margin-top: 30px;
+}
+
+.clear {
+    clear: both;
+}
+.audio-player {
+    margin-top: 20px;
+    text-align: center;
+}
+button {
+    margin: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #007BFF;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 4px;
+    font-size: 16px;
+}
+ul li a {
+    color: black;
+    text-decoration: none; /* This will remove the underline from links */
+}
+
+ul li a:hover {
+    color: #333;  /* Darker shade of black for hover effect */
+}
+
+.book-card {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.book-image {
+    width: 100%;
+    max-width: 150px;
+    margin: auto;
+}
+
+.book-title {
+    margin-top: 10px;
+}
+
+
+

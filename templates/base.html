@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="{{ url_for('static', filename='build/pdf.js') }}"></script>
+    <script src="{{ url_for('static', filename='build/pdf.worker.js') }}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiss - Your Book/Audiobook Destination</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        .welcome-container {
+            background-color: #FAF3E0;
+            padding: 20px 0;
+            text-align: center;
+        }
+    
+        .genres-container {
+            background-color: #FFFFFF;  /* White background */
+            padding: 20px 0;
+            text-align: center;
+        }
+    
+        .book-cover {
+            margin: 10px;  /* Spacing around each book */
+            height: 150px; /* Adjust based on your needs */
+        }
+    
+        .navbar {
+            background-color: #FAF3E0;  /* Creamy color */
+        }
+            /* ... other styles ... */
+
+
+    .search-bar-container {
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+}
+.genre-container {
+    margin-top: 50px;
+}
+
+.genre-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.genre-list li {
+    margin-bottom: 10px;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <body data-base-url="{{ url_for('static', filename='') }}">
+<!-- Navbar structure -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='Hiss.png') }}" alt="Hiss Logo" class="navbar-logo" style="width: 75px;" >
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('top_books') }}">Top books of the Year</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('recommendations') }}">Recommendations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('about_us') }}">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('results_dashboard') }}">Survey Results Dashboard</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    
+
+<div class="container">
+    <!-- Content from child templates will be rendered here -->
+    {% block content %}
+    {% endblock %}
+
+
+{% block genres_section %}
+<div class="container genre-container">
+    <div class="row">
+        <!-- Column 1 -->
+        <div class="col-md-3">
+            <ul class="genre-list">
+                <li><a href="{{ url_for('genre_detail', genre_name='Fantasy') }}">Fantasy</a></li>
+                <li><a href="{{ url_for('genre_detail', genre_name='Sci-Fi') }}">Sci-Fi</a></li>
+                <li><a href="{{ url_for('genre_detail', genre_name='Mystery') }}">Mystery</a></li>
+                <li><a href="{{ url_for('genre_detail', genre_name='Thriller') }}">Thriller</a></li>
+                <li><a href="{{ url_for('genre_detail', genre_name='Romance') }}">Romance</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 2 -->
+<div class="col-md-3">
+    <ul class="genre-list">
+        <li><a href="{{ url_for('genre_detail', genre_name='Drama') }}">Drama</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Adventure') }}">Adventure</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Historical') }}">Historical</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Horror') }}">Horror</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Comedy') }}">Comedy</a></li>
+    </ul>
+</div>
+
+<!-- Column 3 -->
+<div class="col-md-3">
+    <ul class="genre-list">
+        <li><a href="{{ url_for('genre_detail', genre_name='Non-Fiction') }}">Non-Fiction</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Science') }}">Science</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Biography') }}">Biography</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Self-Help') }}">Self-Help</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Health') }}">Health</a></li>
+    </ul>
+</div>
+
+<!-- Column 4 -->
+<div class="col-md-3">
+    <ul class="genre-list">
+        <li><a href="{{ url_for('genre_detail', genre_name='Poetry') }}">Poetry</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Anthology') }}">Anthology</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Psychology') }}">Psychology</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Classics') }}">Classics</a></li>
+        <li><a href="{{ url_for('genre_detail', genre_name='Philosophy') }}">Philosophy</a></li>
+    </ul>
+</div>
+</div>
+{% endblock %}
+<!-- Search bar structure -->
+{% block search_bar %}
+<div class="search-bar-container">
+    <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}" method="GET">
+        <input class="form-control mr-sm-2" type="search" placeholder="Browse books" aria-label="Search" name="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}
+
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Add Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

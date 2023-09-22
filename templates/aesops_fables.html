@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block search_bar %}
+{% endblock %}
+
+{% block genres_section %}
+{% endblock %}
+
+{% block content %}
+<div class="content container">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="aesopTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="book-tab" data-toggle="tab" href="#book" role="tab" aria-controls="book" aria-selected="true">About the Book</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">About the Author</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="book" role="tabpanel" aria-labelledby="book-tab">
+            <img src="{{ url_for('static', filename='aesops_book.jpg') }}" alt="Aesop's Fables Book Image" class="img-fluid mb-3" width="150px">
+            <p>Aesop's Fables is a collection of tales attributed to Aesop, a slave and storyteller believed to have lived in ancient Greece. These fables are known for their moral lessons, often featuring animals as characters.</p>
+        </div>
+        <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
+            <img src="{{ url_for('static', filename='aesop_author.jpg') }}" alt="Aesop's Author Image" class="img-fluid mb-3" width="150px">
+            <p>Aesop is believed to have been a Phrygian slave who lived in ancient Greece. His fables have been passed down through generations and have been translated into numerous languages. They teach important life lessons and morals, often using animals as the main characters to convey the message.</p>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="pdf-container">
+        <div id="pdf-viewer">
+            <canvas id="pdf-canvas"></canvas>
+            <div id="textLayer" class="textLayer"></div>
+        </div>
+        
+        </div>        
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+        <div class="audio-player">
+            <h4 id="fable-title"></h4>
+            <audio controls>
+                <source src="{{ url_for('static', filename='fable1.mp3') }}" type="audio/mpeg">
+            </audio>
+        </div>
+        
+        </div>
+        
+        <script>
+var url = "{{ url_for('static', filename='aesops_fables.pdf') }}";
+var pdfDoc = null;
+var pageNum = 1;
+var scale = 1.5;
+var fables = {
+    1: "The Cock and The Pearl",
+    2: "The Wolf and The Lamb", 
+    3: "The Dog and The Shadow",
+    4: "The Lion's Share",
+    5: "The Wolf and The Crane" 
+};
+var pdfViewer = document.getElementById('pdf-viewer');
+var canvas = document.createElement("canvas");
+var ctx = canvas.getContext('2d');
+pdfViewer.appendChild(canvas);
+
+// Function to update the audio source based on the page number
+function updateAudioSource(page) {
+    var audioElement = document.querySelector('.audio-player audio');
+    var sourceElement = audioElement.querySelector('source');
+    
+    // Get the base URL from the body's data attribute
+    var baseUrl = document.body.getAttribute('data-base-url');
+    
+    // Construct the full URL by appending the filename to the base URL
+    var audioFilename = baseUrl + 'fable' + page + '.mp3';
+
+    // Update the source and load the new audio
+    sourceElement.src = audioFilename;
+    audioElement.load();
+    document.getElementById('fable-title').innerText = fables[pageNum];
+}
+
+
+// Update the audio whenever the page is rendered
+function renderPage(num) {
+    pdfDoc.getPage(num).then(function(page) {
+        var viewport = page.getViewport({ scale: scale });
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        var renderContext = {
+            canvasContext: ctx,
+            viewport: viewport
+        };
+        page.render(renderContext);
+        
+        // Call updateAudioSource
+        updateAudioSource(num);
+    });
+}
+
+
+document.getElementById('prev').addEventListener('click', function() {
+    if (pageNum <= 1) {
+        return;
+    }
+    pageNum--;
+    renderPage(pageNum);
+});
+
+document.getElementById('next').addEventListener('click', function() {
+    if (pageNum >= pdfDoc.numPages) {
+        return;
+    }
+    pageNum++;
+    renderPage(pageNum);
+});
+
+pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+    pdfDoc = pdfDoc_;
+    renderPage(pageNum);
+});
+
+var audioElement = document.querySelector('.audio-player audio');
+
+        </script>
+        
+    </div>
+{% endblock %}
